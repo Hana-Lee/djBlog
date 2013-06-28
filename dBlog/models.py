@@ -19,9 +19,6 @@ class Article(models.Model):
     tags = models.ManyToManyField(Tag)
     comments = models.PositiveSmallIntegerField(default=0, null=True)
 
-    class Admin:
-        pass
-
 
 class Comment(models.Model):
     content = models.TextField(null=False)
