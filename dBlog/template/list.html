@@ -1,11 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>{{ page_title }}</title>
 </head>
 <body>
-<div>{{ page_title }}</div>
-<h1>{{ articles }}</h1>
+<h1><strong>{{ page_title }}</strong></h1>
+{% for article in articles %}
+<div>
+    <h3><a href="/blog/article/{{ article.id }}">{{ article.title }}</a></h3>
+    <ul>
+        <li>{{ article.category.name }}</li>
+        {% for tag in article.tags.all %}
+        <li>{{ tag.name }}</li>
+        {% endfor %}
+        <li>{{ article.created }}</li>
+    </ul>
+    <textarea cols="100" rows="20" readonly="true" style="border: 1px solid #DFDFDF;">{{ article.content }}</textarea>
+</div>
+{% endfor %}
 <h3>{{ current_page }}</h3>
 </body>
 </html>

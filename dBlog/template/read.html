@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<div>
+    <h3>
+        <a href="/blog/article/{{ current_article.id }}">{{ current_article.title }}</a>
+    </h3>
+    <ul>
+        <li>{{ current_article.category.name }}</li>
+        <li>
+            {% for tag in current_article.tags.all %}
+            <span>{{ tag.name }}</span>
+            {% endfor %}
+        </li>
+        <li>{{ current_article.created }}</li>
+        <li>{{ current_article.comments }}</li>
+    </ul>
+    <textarea cols="100" rows="20" readonly="true" style="border: 1px solid #DFDFDF;">{{ current_article.content }}</textarea>
+</div>
+<ul>
+    {% if prev_article %}
+    <li>
+        <a href="/blog/article/{{ prev_article.id }}">이전글</a>
+    </li>
+    {% endif %}
+    {% if next_article %}
+    <li>
+        <a href="/blog/article/{{ next_article.id }}">다음글</a>
+    </li>
+    {% endif %}
+</ul>
+</body>
+</html>
