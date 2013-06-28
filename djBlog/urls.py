@@ -17,5 +17,6 @@ urlpatterns = patterns('',
 
     url(r'^blog/$', 'dBlog.views.index'),
     url(r'^blog/page/(?P<page>\d+)/$', 'dBlog.views.index'),
+    url(r'^blog/article/(?P<article_id>\d+)/$', 'dBlog.views.read')
 
 )
