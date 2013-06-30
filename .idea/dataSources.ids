@@ -81,15 +81,16 @@
       <primary-key columns="id"/>
     </table>
     <table name="DBLOG_COMMENT" schema="" catalog="" type="TABLE">
-      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
+      <column name="id" sqlType="TEXT" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="TEXT" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
       <column name="content" sqlType="TEXT" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
-      <column name="email" sqlType="VARCHAR(50)" length="2000000000" precision="10" nullable="true" jdbcType="12"/>
-      <column name="password" sqlType="VARCHAR(30)" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
-      <column name="modEnabled" sqlType="BOOL" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
-      <column name="created" sqlType="DATETIME" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
-      <column name="updated" sqlType="DATETIME" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
-      <column name="deleted" sqlType="DATETIME" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
-      <column name="article_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="TEXT" length="2000000000" precision="10" nullable="true" jdbcType="12"/>
+      <column name="password" sqlType="TEXT" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
+      <column name="modEnabled" sqlType="TEXT" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
+      <column name="created" sqlType="TEXT" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
+      <column name="updated" sqlType="TEXT" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
+      <column name="deleted" sqlType="TEXT" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
+      <column name="article_id" sqlType="TEXT" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
       <primary-key columns="id"/>
     </table>
     <table name="DBLOG_TAG" schema="" catalog="" type="TABLE">
@@ -126,6 +127,17 @@
       <column name="domain" sqlType="VARCHAR(100)" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
       <column name="name" sqlType="VARCHAR(50)" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
       <primary-key columns="id"/>
+    </table>
+    <table name="TEMP" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INT" length="2000000000" precision="10" nullable="true" jdbcType="12"/>
+      <column name="content" sqlType="TEXT" length="2000000000" precision="10" nullable="true" jdbcType="12"/>
+      <column name="email" sqlType="TEXT" length="2000000000" precision="10" nullable="true" jdbcType="12"/>
+      <column name="password" sqlType="TEXT" length="2000000000" precision="10" nullable="true" jdbcType="12"/>
+      <column name="modEnabled" sqlType="NUM" length="2000000000" precision="10" nullable="true" jdbcType="12"/>
+      <column name="created" sqlType="NUM" length="2000000000" precision="10" nullable="true" jdbcType="12"/>
+      <column name="updated" sqlType="NUM" length="2000000000" precision="10" nullable="true" jdbcType="12"/>
+      <column name="deleted" sqlType="NUM" length="2000000000" precision="10" nullable="true" jdbcType="12"/>
+      <column name="article_id" sqlType="INT" length="2000000000" precision="10" nullable="true" jdbcType="12"/>
     </table>
     <table name="TEST" schema="" catalog="" type="TABLE">
       <column name="one" sqlType="VARCHAR(10)" length="2000000000" precision="10" nullable="true" jdbcType="12"/>
