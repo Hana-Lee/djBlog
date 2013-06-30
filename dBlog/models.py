@@ -21,6 +21,7 @@ class Article(models.Model):
 
 
 class Comment(models.Model):
+    name = models.CharField(max_length=40, null=False)
     content = models.TextField(null=False)
     email = models.CharField(max_length=50, null=True)
     password = models.CharField(max_length=30, null=False)
