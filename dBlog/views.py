@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
-from dBlog.models import Article, Category, Tag
 from django.template import Context, loader, RequestContext
+from django.db import transaction
+
+from dBlog.models import Article, Category, Tag
 
 
 def index(request, page=1):
@@ -68,6 +70,11 @@ def write_form(request):
 
 
 def add_post(request):
+    """
+
+    :param request:
+    :return:
+    """
     formAva = checkWriteForm(request)
 
     if formAva is False:
@@ -90,12 +97,12 @@ def add_post(request):
     article_title = request.POST.get('title')
     article_content = request.POST.get('content')
 
-    article_dict = ({
-        'title' : article_title,
-        'content' : article_content,
-        'category' : article_category,
-        'tag_list' : tag_list
-    })
+    article_dict = {
+        'title': article_title,
+        'content': article_content,
+        'category': article_category,
+        'tag_list': tag_list
+    }
 
     new_article = createArticle(**article_dict)
 
@@ -116,6 +123,7 @@ def checkWriteForm(request):
 
     return True
 
+
 def updateTag(tags):
     tag_list = []
     if len(tags) is 0:
@@ -124,16 +132,19 @@ def updateTag(tags):
     tag_list = map(lambda tag: Tag.objects.get_or_create(name=tag)[0], tags)
     return tag_list
 
-def createArticle(title, content, category, tag_list):
-    new_article = Article(title=title, content=content, category=category)
+@transaction.commit_manually
+def createArticle(**kwargs):
+    new_article = Article(title=kwargs['title'], content=kwargs.get('content'), category=kwargs.get('category'))
 
     try:
         new_article.save()
 
-        if len(tag_list) > 0:
-            for tag in tag_list:
+        if len(kwargs.get('tag_list')) > 0:
+            for tag in kwargs.get('tag_list'):
                 new_article.tags.add(tag)
     except:
         return HttpResponse('블로그 글 저장중 오류가 발생 하였습니다')
+
+    transaction.commit()
 
     return new_article
