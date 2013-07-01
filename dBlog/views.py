@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
-from dBlog.models import Article
+from dBlog.models import Article, Category, Tag
 from django.template import Context, loader, RequestContext
 
 
@@ -58,30 +58,82 @@ def read(request, article_id=None):
 
 def write_form(request):
     page_title = '블로그 글 쓰기'
-    data_dict = ({'page_title': page_title})
+    categories = Category.objects.all()
+
+    data_dict = ({
+                     'page_title': page_title,
+                     'categories': categories
+                 })
     return render_to_response('write.html', data_dict, context_instance=RequestContext(request))
 
 
 def add_post(request):
     formAva = checkWriteForm(request)
 
-    if formAva == False:
+    if formAva is False:
         return HttpResponse('필수값 입력 여부를 확인하세요')
 
-    article_title = request.POST['title']
-    return HttpResponse('hello %s' % article_title)
+    try:
+        article_category = Category.objects.get(id=request.POST.get('category'))
+    except:
+        return HttpResponse('헐....카테고리 지정안되어있음.')
+
+    tag_list = []
+    if request.POST.has_key('tags') is True:
+        #split_tags = unicode(request.POST.get('tags')).split(',')
+
+        #for tag in split_tags:
+        #    tag_list.append(tag.strip())
+        tags = map(lambda str: str.strip(), unicode(request.POST.get('tags')).split(','))
+        tag_list = updateTag(tags)
+
+    article_title = request.POST.get('title')
+    article_content = request.POST.get('content')
+
+    article_dict = ({
+        'title' : article_title,
+        'content' : article_content,
+        'category' : article_category,
+        'tag_list' : tag_list
+    })
+
+    new_article = createArticle(**article_dict)
+
+    return HttpResponse('%s 번째 글 저장이 정상 처리 되었습니다' % new_article.id)
 
 
 def checkWriteForm(request):
-    if request.POST.has_key('title') == False:
+    if request.POST.has_key('title') is False:
         return False
-    elif request.POST.has_key('content') == False:
-        return False
-
-    if len(request.POST['title']) == 0:
+    elif request.POST.has_key('content') is False:
         return False
 
-    if len(request.POST['content']) == 0:
+    if len(request.POST.get('title')) is 0:
+        return False
+
+    if len(request.POST.get('content')) is 0:
         return False
 
     return True
+
+def updateTag(tags):
+    tag_list = []
+    if len(tags) is 0:
+        return tag_list
+
+    tag_list = map(lambda tag: Tag.objects.get_or_create(name=tag)[0], tags)
+    return tag_list
+
+def createArticle(title, content, category, tag_list):
+    new_article = Article(title=title, content=content, category=category)
+
+    try:
+        new_article.save()
+
+        if len(tag_list) > 0:
+            for tag in tag_list:
+                new_article.tags.add(tag)
+    except:
+        return HttpResponse('블로그 글 저장중 오류가 발생 하였습니다')
+
+    return new_article
