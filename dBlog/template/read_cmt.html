@@ -1,0 +1,10 @@
+{% if comments|length %}
+<ul>
+{% for comment in comments %}
+	<li>{{ comment.name }}님이 {{ comment.created }}에 남긴 댓글
+	<p>{{ comment.content }}</p></li>
+{% endfor %}
+</ul>
+{% else %}
+댓글이 없습니다.
+{% endif %}

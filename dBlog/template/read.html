@@ -20,6 +20,10 @@
     </ul>
     <textarea cols="100" rows="20" readonly="true" style="border: 1px solid #DFDFDF;">{{ current_article.content }}</textarea>
 </div>
+<div>
+    {% include 'write_cmt.html' %}
+    {% include 'read_cmt.html' %}
+</div>
 <ul>
     {% if prev_article %}
     <li>

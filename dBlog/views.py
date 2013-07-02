@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 from django.http import HttpResponse
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, redirect
 from django.template import Context, loader, RequestContext
-from django.db import transaction
 
-from dBlog.models import Article, Category, Tag
+import hashlib
+
+from dBlog.models import Article, Category, Comment
+from dBlog import service
 
 
 def index(request, page=1):
@@ -36,7 +38,10 @@ def index(request, page=1):
 def read(request, article_id=None):
     page_title = '블로그 글 읽기'
 
-    current_article = Article.objects.get(id=int(article_id))
+    try:
+        current_article = Article.objects.get(id=int(article_id))
+    except:
+        return HttpResponse('%d 에 해당하는 글이 존재 하지 않습니다' % article_id)
     try:
         prev_article = current_article.get_previous_by_created()
     except:
@@ -47,15 +52,17 @@ def read(request, article_id=None):
     except:
         next_article = None
 
-    tpl = loader.get_template('read.html')
-    ctx = Context({
+    comments = Comment.objects.filter(article=current_article).order_by('created')
+
+    data_dict = ({
         'page_title': page_title,
         'current_article': current_article,
         'prev_article': prev_article,
-        'next_article': next_article
+        'next_article': next_article,
+        'comments' : comments
     })
 
-    return HttpResponse(tpl.render(ctx))
+    return render_to_response('read.html', data_dict, context_instance=RequestContext(request))
 
 
 def write_form(request):
@@ -92,7 +99,7 @@ def add_post(request):
         #for tag in split_tags:
         #    tag_list.append(tag.strip())
         tags = map(lambda str: str.strip(), unicode(request.POST.get('tags')).split(','))
-        tag_list = updateTag(tags)
+        tag_list = service.updateTag(tags)
 
     article_title = request.POST.get('title')
     article_content = request.POST.get('content')
@@ -104,7 +111,7 @@ def add_post(request):
         'tag_list': tag_list
     }
 
-    new_article = createArticle(**article_dict)
+    new_article = service.createArticle(**article_dict)
 
     return HttpResponse('%s 번째 글 저장이 정상 처리 되었습니다' % new_article.id)
 
@@ -124,27 +131,28 @@ def checkWriteForm(request):
     return True
 
 
-def updateTag(tags):
-    tag_list = []
-    if len(tags) is 0:
-        return tag_list
+def add_comment(request):
+    cmt_name = request.POST.get('name', '')
+    if not cmt_name.strip():
+        return HttpResponse('이름 입력은 필수 입니다.')
 
-    tag_list = map(lambda tag: Tag.objects.get_or_create(name=tag)[0], tags)
-    return tag_list
+    cmt_pwd = request.POST.get('password', '')
+    if not cmt_pwd.strip():
+        return HttpResponse('비밀번호를 입력해주세요')
 
-@transaction.commit_manually
-def createArticle(**kwargs):
-    new_article = Article(title=kwargs['title'], content=kwargs.get('content'), category=kwargs.get('category'))
+    cmt_pwd = hashlib.md5(cmt_pwd).hexdigest()
 
-    try:
-        new_article.save()
+    cmt_content = request.POST.get('content', '')
+    if not cmt_content.strip():
+        return HttpResponse('내용을 입력해주세요')
 
-        if len(kwargs.get('tag_list')) > 0:
-            for tag in kwargs.get('tag_list'):
-                new_article.tags.add(tag)
-    except:
-        return HttpResponse('블로그 글 저장중 오류가 발생 하였습니다')
+    cmt_email = request.POST.get('email', '')
 
-    transaction.commit()
+    article_id = request.POST.get('article_id', '')
+    current_article = Article.objects.get(id=article_id)
 
-    return new_article
+    cmt_dict = dict(name=cmt_name, password=cmt_pwd, content=cmt_content, email=cmt_email, article=current_article)
+
+    service.update_comment(**cmt_dict)
+
+    return redirect('/blog/article/%s/' % article_id)

@@ -4,10 +4,14 @@
     <title>{{ page_title }}</title>
 </head>
 <body>
-<h1><strong>{{ page_title }}</strong></h1>
+<h1>
+    <strong>{{ page_title }}</strong>
+</h1>
 {% for article in articles %}
 <div>
-    <h3><a href="/blog/article/{{ article.id }}">{{ article.title }}</a></h3>
+    <h3>
+        <a href="/blog/article/{{ article.id }}">{{ article.title }}</a>
+    </h3>
     <ul>
         <li>{{ article.category.name }}</li>
         {% for tag in article.tags.all %}

@@ -1,0 +1,23 @@
+<form method="post" action="/blog/add/comment/">
+    {% csrf_token %}
+    <input type="hidden" name="article_id" value="{{ current_article.id }}" />
+    <p>
+        <label for="name">글쓴이</label>
+        <input type="text" id="name" name="name" value="" />
+    </p>
+    <p>
+        <label for="password">비밀번호</label>
+        <input type="password" id="password" name="password" value="" />
+    </p>
+    <p>
+        <label for="email">email</label>
+        <input type="text" id="email" name="email" value="" />
+    </p>
+    <p>
+        <label for="content">내용</label>
+        <textarea id="content" name="content"></textarea>
+    </p>
+    <p>
+        <input type="submit" value="댓글 달기" />
+    </p>
+</form>
