@@ -1,4 +1,5 @@
 # Django settings for djBlog project.
+import os
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -107,11 +108,13 @@ ROOT_URLCONF = 'djBlog.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'djBlog.wsgi.application'
 
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__name__))
+SITE_ROOT = os.path.join(PROJECT_ROOT, 'dBlog')
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    './dBlog/template',
+    os.path.join(SITE_ROOT, 'template/'),
 )
 
 INSTALLED_APPS = (

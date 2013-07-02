@@ -1,8 +1,46 @@
 # -*- coding: utf-8 -*-
-from django.http import HttpResponse
 from django.db import transaction, DatabaseError
 
 from dBlog.models import Comment, Article, Tag
+
+
+class BlogService(object):
+    def __init__(self):
+        pass
+
+    @transaction.commit_on_success
+    def save(self, *model, **models):
+        if 'save' in dir(model):
+            try:
+                model[0].save()
+            except DatabaseError, e:
+                error_msg = model.__class__.__name__ + ' 을 세이브 도중 오류가 발생 하였습니다 : %s'
+                raise DatabaseError(error_msg % e)
+
+    @transaction.commit_on_success
+    def delete(self, *model, **models):
+        if 'delete' in dir(model):
+            try:
+                model[0].delete()
+            except DatabaseError, e:
+                error_msg = model.__class__.__name__ + ' 을 삭제 도중 오류가 발생 하였습니다. : %s'
+                raise DatabaseError(error_msg % e)
+
+    def get(self, model_id=None, *model):
+        if model_id is None:
+            raise Exception('id 는 필수로 넘겨 주어야 합니다.')
+
+        if model is None:
+            raise Exception('Model 은 필수로 넘겨 주어야 하비다.')
+
+        if 'objects' in dir(model[0]):
+            try:
+                mdl = Article(model[0])
+                print dir(mdl)
+                return mdl.objects.get(id=int(model_id))
+            except DatabaseError, e:
+                error_msg = model.__class__.__name__ + ' 을 가져오는 도중 오류가 발생 하였습니다. %s'
+                raise DatabaseError(error_msg % e)
 
 
 def updateTag(tags):
@@ -37,6 +75,7 @@ def createArticle(**kwargs):
 
     return new_article
 
+
 @transaction.commit_manually
 def update_comment(**kwargs):
     new_cmt = Comment(
@@ -49,11 +88,25 @@ def update_comment(**kwargs):
     try:
         new_cmt.save()
 
-        article = Article.objects.get(id=kwargs.get('article').id)
-        article.comments += 1
-        article.save()
+        update_article_comment_count(kwargs.get('article').id)
     except DatabaseError, e:
         error_msg = '댓글 저장중 오류가 발생 하였습니다. %s'
         raise DatabaseError(error_msg % e)
+
     transaction.commit()
+
     return new_cmt
+
+
+@transaction.commit_on_success
+def update_article_comment_count(article_id):
+    try:
+        target_article = Article.objects.get(id=article_id)
+        if not target_article:
+            raise DatabaseError('아이디 %d 에 해당하는 블로그 글을 가져오는데 실패 했습니다.' % article_id)
+
+        target_article.comments += 1
+        target_article.save()
+    except Exception, e:
+        error_msg = '블로그 글의 댓글 갯수를 업데이트 도중 오류가 발생하였습니다. %s'
+        raise DatabaseError(error_msg % e)

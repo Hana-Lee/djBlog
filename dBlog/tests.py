@@ -4,13 +4,100 @@ when you run "manage.py test".
 
 Replace this with more appropriate tests for your application.
 """
+import os
+from django.test import TestCase, Client
+from django.conf import settings
 
-from django.test import TestCase
+from dBlog.models import Article, Category
+from dBlog.service import BlogService
 
 
-class SimpleTest(TestCase):
-    def test_basic_addition(self):
-        """
-        Tests that 1 + 1 always equals 2.
-        """
-        self.assertEqual(1 + 1, 2)
+class BlogModelsTest(TestCase):
+    def setUp(self):
+        category = Category.objects.create(name='first')
+        Article.objects.create(
+            title = 'first blog',
+            content = 'content',
+            category = category
+        )
+
+    def test_category(self):
+        first_category = Category.objects.get(id=1)
+        self.assertEqual(first_category.name, 'first')
+
+    def test_article(self):
+        first_article = Article.objects.get(id=1)
+        self.assertEqual(first_article.title, 'first blog')
+
+
+class BlogRequestResponseTest(TestCase):
+    def setUp(self):
+        category = Category.objects.create(name='first')
+        Article.objects.create(
+            title = 'first blog',
+            content = 'content',
+            category = category
+        )
+
+        test_template_dirs = os.path.dirname(__file__)
+        settings.TEMPLATE_DIRS = (test_template_dirs + '/template/',)
+
+    def test_article_response(self):
+        c = Client()
+        response = c.get('/blog/article/1/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_blog_list_response(self):
+        c = Client()
+        response = c.get('/blog/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_page_response(self):
+        c = Client()
+        response = c.get('/blog/page/1/')
+        self.assertEqual(response.status_code, 200)
+
+
+class BlogServiceTest(TestCase):
+    def test_save_method(self):
+        service = BlogService()
+        self.assertIsNotNone(service, 'service instance must not None')
+
+        category = Category(name='first')
+        article = Article(
+            title = 'first blog',
+            content = 'content',
+            category = category
+        )
+
+        service.save(article)
+
+        print Article.objects.count()
+
+    def test_get_method(self):
+        service = BlogService()
+        self.assertIsNotNone(service, 'service instance must not None')
+
+        category = Category(name='first')
+        article = Article(
+            title = 'first blog',
+            content = 'content',
+            category = category
+        )
+
+        service.save(article)
+
+        model_id = 1
+
+        article = service.get(model_id, Article)
+        self.assertIsNotNone(article, 'article must not none')
+
+    def test_delete_method(self):
+        service = BlogService()
+        self.assertIsNotNone(service, 'service instance must not None')
+
+        article = service.get(1, Article)
+        self.assertIsNotNone(article, 'article must not none')
+        service.delete(article)
+
+        print 'end delete test'
