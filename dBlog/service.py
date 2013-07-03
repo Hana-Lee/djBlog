@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.db import transaction, DatabaseError
 
-from dBlog.models import Comment, Article, Tag
+from dBlog.models import Comment, Article, Tag, Category
 
 
 class BlogService(object):
@@ -110,3 +110,46 @@ def update_article_comment_count(article_id):
     except Exception, e:
         error_msg = '블로그 글의 댓글 갯수를 업데이트 도중 오류가 발생하였습니다. %s'
         raise DatabaseError(error_msg % e)
+
+
+@transaction.commit_on_success
+def delete_comment(comment_id, password):
+    try:
+        target = Comment.objects.get(id=comment_id, password=password)
+        if target is None:
+            raise ValueError('댓글을 가져오는데 실패 하였습니다. 비밀번호를 확인하세요.')
+
+        target.delete()
+    except DatabaseError, e:
+        raise DatabaseError(e)
+
+
+@transaction.commit_on_success
+def delete_article(article_id):
+    try:
+        target = Article.objects.get(id=article_id)
+        if target is None:
+            raise ValueError('삭제하려는 블로그가 존재 하지 않습니다.')
+
+        target.delete()
+    except DatabaseError, e:
+        raise DatabaseError(e)
+
+
+@transaction.commit_on_success
+def delete_category(category_id):
+    try:
+        target = Category.objects.get(id=category_id)
+        if target is None:
+            raise ValueError('카테고리 삭제에 실패 하였습니다.')
+
+        target.delete()
+    except DatabaseError, e:
+        raise DatabaseError(e)
+
+def create_category(category_name):
+    try:
+        category = Category(name=category_name)
+        category.save()
+    except DatabaseError, e:
+        raise DatabaseError('카테고리 저장에 실패 하였습니다.')

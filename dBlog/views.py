@@ -26,13 +26,12 @@ def index(request, page=1):
 
     articles = Article.objects.all().select_related().order_by('-created')[start_pos: end_pos]
 
-    tpl = loader.get_template('list.html')
-    ctx = Context({
+    data_dict = ({
         'page_title': page_title,
         'articles': articles,
         'current_page': page_no
     })
-    return HttpResponse(tpl.render(ctx))
+    return render_to_response('list.html', data_dict, context_instance=RequestContext(request))
 
 
 def read(request, article_id=None):
@@ -156,3 +155,59 @@ def add_comment(request):
     service.update_comment(**cmt_dict)
 
     return redirect('/blog/article/%s/' % article_id)
+
+
+def del_comment(request):
+    cmt_id = request.POST.get('cmt_id', '')
+    if not cmt_id.strip():
+        return HttpResponse('댓글 아이디가 존재 하지 않습니다.')
+
+    cmt_pwd = request.POST.get('password', '')
+    if not cmt_pwd.strip():
+        return HttpResponse('비밀번호 입력이 잘못 되었습니다.')
+
+    article_id = request.POST.get('article_id', '')
+
+    cmt_pwd = hashlib.md5(cmt_pwd).hexdigest()
+
+    service.delete_comment(cmt_id, cmt_pwd)
+
+    return redirect('/blog/article/%s/' % article_id)
+
+def del_article(request):
+    article_id = request.POST.get('article_id', '')
+    if not article_id:
+        return HttpResponse('블로그 글 아이디가 존재하지 않습니다.')
+
+    service.delete_article(article_id)
+
+    return redirect('/blog/')
+
+def view_category(request):
+    page_title = '카테고리 관리'
+    categories = Category.objects.all()
+
+    data_dict = ({
+                     'page_title': page_title,
+                     'categories': categories
+                 })
+    return render_to_response('write_category.html', data_dict, context_instance=RequestContext(request))
+
+def add_category(request):
+    category_name = request.POST.get('category_name', '')
+    print len(category_name)
+    if len(category_name) is 0:
+        return HttpResponse('카테고리 이름이 없습니다.')
+
+    service.create_category(category_name)
+
+    return redirect('/blog/')
+
+def del_category(request):
+    category_id = request.POST.get('category_id', '')
+    if not category_id:
+        return HttpResponse('카테고리 아이디가 없습니다.')
+
+    service.delete_category(category_id)
+
+    return redirect('/blog/add/category')

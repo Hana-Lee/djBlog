@@ -13,11 +13,42 @@
         <a href="/blog/article/{{ article.id }}">{{ article.title }}</a>
     </h3>
     <ul>
-        <li>{{ article.category.name }}</li>
-        {% for tag in article.tags.all %}
-        <li>{{ tag.name }}</li>
-        {% endfor %}
-        <li>{{ article.created }}</li>
+        <li>
+            <span>카테고리 : </span>
+            <ul>
+                <li>
+                    <div>{{ article.category.name }}</div>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <span>태그목록 : </span>
+            <ul>
+                <li>
+                {% for tag in article.tags.all %}
+                    <span>{{ tag.name }}</span>
+                {% endfor %}
+                </li>
+            </ul>
+        </li>
+        <li>
+            <span>생성일시 : </span>
+            <ul>
+                <li>
+                    <div>{{ article.created }}</div>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <form method="POST" action="/blog/delete/article/">
+                {% csrf_token %}
+                <input type="hidden" name="article_id" value="{{ article.id }}" />
+                <input type="submit" value="글 삭제" />
+            </form>
+        </li>
+        <li>
+            <a href="/blog/write/category">카테고리생성</a>
+        </li>
     </ul>
     <textarea cols="100" rows="20" readonly="true" style="border: 1px solid #DFDFDF;">{{ article.content }}</textarea>
 </div>

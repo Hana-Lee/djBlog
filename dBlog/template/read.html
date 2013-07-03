@@ -8,11 +8,20 @@
     <h3>
         <a href="/blog/article/{{ current_article.id }}">{{ current_article.title }}</a>
     </h3>
+    <div>
+        <span>
+            <a href="/blog/">첫화면으로</a>
+        </span>
+    </div>
     <ul>
-        <li>{{ current_article.category.name }}</li>
+        <li>
+            <span>카테고리</span>
+            <div>{{ current_article.category.name }}</div>
+        </li>
         <li>
             {% for tag in current_article.tags.all %}
-            <span>{{ tag.name }}</span>
+            <span>태그목록 : </span>
+            <div>{{ tag.name }}</div>
             {% endfor %}
         </li>
         <li>{{ current_article.created }}</li>

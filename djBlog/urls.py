@@ -20,5 +20,10 @@ urlpatterns = patterns('',
     url(r'^blog/article/(?P<article_id>\d+)/$', 'dBlog.views.read'),
     url(r'^blog/write/$', 'dBlog.views.write_form'),
     url(r'^blog/add/post/$', 'dBlog.views.add_post'),
-    url(r'^blog/add/comment/$', 'dBlog.views.add_comment')
+    url(r'^blog/write/category', 'dBlog.views.view_category'),
+    url(r'^blog/add/comment/$', 'dBlog.views.add_comment'),
+    url(r'^blog/add/category/$', 'dBlog.views.add_category'),
+    url(r'^blog/delete/comment/$', 'dBlog.views.del_comment'),
+    url(r'^blog/delete/article/$', 'dBlog.views.del_article'),
+    url(r'^blog/delete/category/$', 'dBlog.views.del_category')
 )

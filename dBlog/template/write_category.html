@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <h3>{{ page_title }}</h3>
+    <p>
+        <label for="category">글 갈래</label>
+        <select name="category" id="category">
+            {% for category in categories %}
+            <option value="{{ category.id }}">{{ category.name }}</option>
+            {% endfor %}
+        </select>
+    </p>
+    <form method="POST" action="/blog/add/category/">
+        {% csrf_token %}
+        <p>
+            <label for="name">카테고리 이름 : </label>
+            <input id="name" type="text" name="category_name" />
+            <input type="submit" value="저장" />
+        </p>
+    </form>
+</body>
+</html>

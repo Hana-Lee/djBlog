@@ -1,8 +1,20 @@
 {% if comments|length %}
 <ul>
 {% for comment in comments %}
-	<li>{{ comment.name }}님이 {{ comment.created }}에 남긴 댓글
-	<p>{{ comment.content }}</p></li>
+	<li style="border: 1px solid #dfdfdf;width:600px;margin: 10px 0 10px 0">
+        <p>{{ comment.name }}님이 {{ comment.created }}에 남긴 댓글</p>
+	    <p>{{ comment.content }}</p>
+        <form method="POST" action="/blog/delete/comment/">
+            {% csrf_token %}
+            <input type="hidden" name="cmt_id" value="{{ comment.id }}" />
+            <input type="hidden" name="article_id" value="{{ comment.article.id }}"
+            <span>
+                <label for="cmt_pwd_{{ comment.id }}">비밀번호</label>
+                <input id="cmt_pwd_{{ comment.id }}" type="password" name="password" />
+            </span>
+            <input type="submit" value="삭제" />
+        </form>
+    </li>
 {% endfor %}
 </ul>
 {% else %}
