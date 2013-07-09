@@ -13,9 +13,7 @@
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-    <link rel="stylesheet" href="css/normalize.css"/>
-    <link rel="stylesheet" href="css/main.css"/>
-    <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    <script src="js/vendor/masonry.pkgd.min.js"></script>
 
     <style type="text/css">
         body {
@@ -23,7 +21,7 @@
         }
 
         body {
-            background-image: url(http://www.elegantthemes.com/preview/Notebook/wp-content/themes/Notebook/images/control_panel/body-bg4.png);
+            background-image: url(img/body-bg-17.png);
         }
     </style>
     <link id="raleway" href="http://fonts.googleapis.com/css?family=Raleway:100" rel="stylesheet" type="text/css"/>
@@ -34,7 +32,7 @@
     </style>
     <link id="droid_sans" href="http://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css"/>
     <style type="text/css">
-        body, .entry.normal-post .content p {
+        #iframe, .entry.normal-post .content p {
             font-family: 'Droid Sans', Arial, sans-serif !important;
         }
     </style>
@@ -46,44 +44,60 @@
         }
     </style>
     <link rel="stylesheet" href="css/fonts/nanum.css" />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/n-style.css" />
     <link rel="stylesheet" href="css/shortcodes.css" />
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 <body class="home blog et_includes_sidebar">
 <!--[if lt IE 7]>
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
 <![endif]-->
-<div id="left-area">
-    <header>
-        <div id="et-control-panel"></div>
-        <div id="logo"></div>
-        <nav id="top-menu"></nav>
-    </header>
-    <div id="sidebar">
-        <div id="meta-4" class="widget iwdget_meta"></div>
-        <div id="linkcat-2" class="widget widget_links"></div>
-        <div id="recent-posts-4" class="widget widget_recent_entries"></div>
-        <div id="recent-comments-3" class="widget widget_recent_comments"></div>
+<header id="header">
+    <div id="inside">
+        <a href="/blog/" target="_top">
+            <div id="top-logo">Hana's Blog</div>
+        </a>
+        <a href="/blog/logout">
+            <img id="logout" src="img/logout.png" alt="Logout" />
+        </a>
+        <form id="login">
+            <input class="span2" type="text" placeholder="Email" />
+            <input class="span2" type="password" placeholder="Password" />
+            <button type="submit" class="btn">Sign in</button>
+        </form>
+    </div>
+</header>
+<div id="iframe">
+    <div id="left-area">
+        <header>
+            <div id="et-control-panel"></div>
+            <div id="logo"></div>
+            <nav id="top-menu"></nav>
+        </header>
+        <div id="sidebar">
+            <div id="meta-4" class="widget iwdget_meta"></div>
+            <div id="linkcat-2" class="widget widget_links"></div>
+            <div id="recent-posts-4" class="widget widget_recent_entries"></div>
+            <div id="recent-comments-3" class="widget widget_recent_comments"></div>
+        </div>
+    </div>
+    <div id="content-area" class="clearfix">
+        <div id="content_right">
+            <div id="et_posts" class="masonry" style="position:relative;">
+                <article id="post-5" class="post-5 post type-post status-pulish format-standard hentry category-blog normal-post entry masonry-brick"></article>
+            </div>
+            <div class="wp-pagenavi">
+                <span class="pages">Page 1 of 2</span>
+                <span class="current">1</span>
+                <a href="/blog/page/2/" class="page larger">2</a>
+                <a href="/blog/page/2/" class="nextpostslink">»</a>
+            </div>
+            <div id="footer_top_part"></div>
+            <footer id="main_footer" style="height: auto;"></footer>
+        </div>
     </div>
 </div>
-<div id="content-area" class="clearfix">
-    <div id="content_right">
-        <div id="et_posts" class="masonry" style="position:relative;">
-            <article id="post-5" class="post-5 post type-post status-pulish format-standard hentry category-blog normal-post entry masonry-brick"></article>
-        </div>
-        <div class="wp-pagenavi">
-            <span class="pages">Page 1 of 2</span>
-            <span class="current">1</span>
-            <a href="/blog/page/2/" class="page larger">2</a>
-            <a href="/blog/page/2/" class="nextpostslink">»</a>
-        </div>
-        <div id="footer_top_part"></div>
-        <footer id="main_footer" style="height: auto;"></footer>
-    </div>
-</div>
-
 <script src="js/vendor/jquery-1.9.1.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
 <script src="js/plugins.js"></script>
 <script src="js/main.js"></script>
 
