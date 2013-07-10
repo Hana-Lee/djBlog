@@ -76,3 +76,17 @@
     -o-transition: background-position 0.1s linear;
     transition: background-position 0.1s linear;
 }
+
+#left-logo .logo {
+    background: url(../img/left-logo.png) no-repeat;
+    background-size: 120px 88px;
+    width: 120px;
+    height: 88px;
+    margin: 5px auto;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+     #left-logo .logo {
+          background: url(../img/left-logo@2x.png) no-repeat;
+     }
+}
