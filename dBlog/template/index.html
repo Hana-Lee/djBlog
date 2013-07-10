@@ -12,8 +12,9 @@
     <meta name="viewport" content="width=device-width"/>
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-
-    <script src="js/vendor/masonry.pkgd.min.js"></script>
+    <script src="js/vendor/jquery-1.8.3.min.js"></script>
+    <!--script src="js/vendor/masonry.pkgd.min.js"></script-->
+    <script src="js/vendor/jquery.masonry.min.js"></script>
 
     <style type="text/css">
         body {
@@ -32,7 +33,7 @@
     </style>
     <link id="droid_sans" href="http://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css"/>
     <style type="text/css">
-        #iframe, .entry.normal-post .content p {
+        #iframe, .entry.normal-post .content p, .content a {
             font-family: 'Droid Sans', Arial, sans-serif !important;
         }
     </style>
@@ -79,13 +80,13 @@
             <nav id="top-menu">
                 <ul id="menu-pages">
                     <li id="menu-item-1" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-1">
-                        <a href="/blog/">Home</a>
+                        <a href="#">Home</a>
                     </li>
                     <li id="menu-item-2" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2">
-                        <a href="/blog/">Blog</a>
+                        <a href="#/">Blog</a>
                     </li>
                     <li id="menu-item-3" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3">
-                        <a href="/blog/">Shortcut</a>
+                        <a href="#">Shortcut</a>
                     </li>
                 </ul>
             </nav>
@@ -99,21 +100,311 @@
     </div>
     <div id="content-area" class="clearfix">
         <div id="content_right">
-            <div id="et_posts" class="masonry" style="position:relative;">
-                <article id="post-5" class="post-5 post type-post status-pulish format-standard hentry category-blog normal-post entry masonry-brick"></article>
+            <div id="et_posts" class="masonry" style="position: relative;">
+                <article id="post-5" class="post-5 post type-post status-publish format-standard hentry category-blog normal-post entry masonry-brick">
+                <div class="main_content">
+                    <div class="thumb">
+                        <a href="http://www.elegantthemes.com/preview/Notebook/2011/12/05/this-is-an-article/">
+                        <img src="http://www.elegantthemes.com/preview/Notebook/wp-content/uploads/et_temp/4-109191_280x117.jpg" class="n-post-image" alt="This Is An Article" width="280" height="117">
+                            <span class="overlay"></span>
+                        </a>
+                    </div> 	<!-- end .thumb -->
+                    <div class="content">
+                        <h2 class="title">
+                            <a href="http://www.elegantthemes.com/preview/Notebook/2011/12/05/this-is-an-article/">This Is An Article</a>
+                        </h2>
+                        <p class="meta">By <a href="http://www.elegantthemes.com/preview/Notebook/author/admin/" title="Posts by admin" rel="author">admin</a> on 12-05-2011</p>
+                        <p>Fusce urna dui, lacinia vel aliquet at, interdum feugiat magna. Nulla a...</p>
+                    </div> <!-- end .content-->
+                </div> <!-- end .main_content-->
+                <div class="center_layer"></div>
+                <div class="bottom_layer"></div>
+                </article> <!-- end .entry-->
+
+                <article id="post-13" class="post-13 post type-post status-publish format-audio hentry category-blog audio entry masonry-brick">
+                    <img src="http://www.elegantthemes.com/preview/Notebook/wp-content/uploads/et_temp/3-84548_176x176.jpg" class="audio-image" alt="Listen To My New Song" width="176" height="176">
+                    <div class="content">
+                        <div class="audio_info">
+                            <h2 class="title"><a href="http://www.elegantthemes.com/preview/Notebook/2011/12/05/listen-to-my-new-song/">Listen To My New Song</a></h2>
+                            <p class="meta">By <a href="http://www.elegantthemes.com/preview/Notebook/author/admin/" title="Posts by admin" rel="author">admin</a> on 12-05-2011</p>
+                        </div> <!-- end .audio_info -->
+                        <div id="jquery_jplayer_1" class="jp-jplayer" style="background-color: rgb(0, 0, 0);">
+                            <img id="jp_poster_0" style="width: 288px; height: 0px; display: none;" />
+                            <audio id="jp_audio_0" preload="metadata" src="http://www.elegantthemes.com/preview/Notebook/wp-content/uploads/2011/12/DJ-Practice.mp3"></audio>
+                        </div>
+                        <div id="jp_container_1" class="jp-audio">
+                            <div class="jp-type-single">
+                                <div class="jp-gui jp-interface">
+                                    <ul class="jp-controls">
+                                    <li><a href="javascript:;" class="jp-play audio_play" tabindex="1" style="">Play</a></li>
+                                    <li><a href="javascript:;" class="jp-pause" tabindex="1" style="display: none;">Pause</a></li>
+                                    </ul>
+                                    <div class="jp-progress">
+                                        <div class="jp-seek-bar" style="width: 100%;">
+                                            <div class="jp-play-bar" style="width: 0%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="jp-no-solution">
+                                <span>Update Required</span>
+                                To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+                            </div>
+                            </div>
+                        </div>
+                    </div> <!-- end .content -->
+                </article> <!-- end .entry -->
+
+                <article id="post-49" class="post-49 post type-post status-publish format-image hentry category-blog image entry masonry-brick">
+                    <div class="photo">
+                        <a href="http://www.elegantthemes.com/preview/Notebook/wp-content/uploads/2011/12/7.jpg" class="fancybox" title="A Lonely Tree">
+                            <img src="http://www.elegantthemes.com/preview/Notebook/wp-content/uploads/et_temp/7-127378_280x187.jpg" class="entry-image" alt="A Lonely Tree" width="280" height="187">
+                            <span class="overlay"></span>
+                            <span class="zoom" style="opacity: 0; display: block;"></span>
+                        </a>
+                        <span class="tape"></span>
+                    </div> 	<!-- end .photo -->
+                    <div class="content">
+                        <h2 class="title">
+                            <a href="http://www.elegantthemes.com/preview/Notebook/2011/12/05/a-lonely-tree/">A Lonely Tree</a>
+                        </h2>
+                        <p class="meta">By <a href="http://www.elegantthemes.com/preview/Notebook/author/admin/" title="Posts by admin" rel="author">admin</a> on 12-05-2011</p>
+                    </div> <!-- end .content-->
+                </article> <!-- end .entry-->
+
+                <article id="post-8" class="post-8 post type-post status-publish format-video hentry category-blog video entry masonry-brick">
+                    <div class="img">
+                        <a href="#et_video_post_8" class="fancybox" title="This Is A Video Post">
+                            <span class="video_box">
+                                <img src="http://www.elegantthemes.com/preview/Notebook/wp-content/uploads/et_temp/2-157306_280x187.jpg" class="video-image" alt="This Is A Video Post" width="280" height="187" />
+                            </span>
+                            <span class="overlay"></span>
+                            <span class="play"></span>
+                        </a>
+                    </div> 	<!-- end .img -->
+                    <div class="content">
+                        <h2 class="title">
+                            <a href="http://www.elegantthemes.com/preview/Notebook/2011/12/05/8/">This Is A Video Post</a>
+                        </h2>
+                        <p class="meta">By <a href="http://www.elegantthemes.com/preview/Notebook/author/admin/" title="Posts by admin" rel="author">admin</a> on 12-05-2011</p>
+                    </div>
+                </article> <!-- end .entry-->
+
+                <div class="et_embedded_videos">
+                    <div id="et_video_post_8">
+                        <p>
+                            <iframe width="500" height="281" src="" frameborder="0" allowfullscreen=""></iframe>
+                        </p>
+                    </div>
+                </div>
+
+                <article id="post-16" class="post-16 post type-post status-publish format-image hentry category-blog image entry masonry-brick">
+                    <div class="photo">
+                        <a href="http://www.elegantthemes.com/preview/Notebook/wp-content/uploads/2011/12/13.jpg" class="fancybox" title="Amazing New Photography">
+                            <img src="http://www.elegantthemes.com/preview/Notebook/wp-content/uploads/et_temp/13-128743_280x187.jpg" class="entry-image" alt="Amazing New Photography" width="280" height="187" />
+                            <span class="overlay"></span>
+                            <span class="zoom" style="opacity: 0; display: block;"></span>
+                        </a>
+                        <span class="tape"></span>
+                    </div> 	<!-- end .photo -->
+                    <div class="content">
+                        <h2 class="title">
+                            <a href="http://www.elegantthemes.com/preview/Notebook/2011/12/05/amazing-new-photography/">Amazing New Photography</a>
+                        </h2>
+                        <p class="meta">By <a href="http://www.elegantthemes.com/preview/Notebook/author/admin/" title="Posts by admin" rel="author">admin</a> on 12-05-2011</p>
+                    </div> <!-- end .content-->
+                </article> <!-- end .entry-->
+
+                <article id="post-23" class="post-23 post type-post status-publish format-standard hentry category-blog normal-post entry masonry-brick">
+                    <div class="main_content">
+                        <div class="thumb">
+                            <a href="http://www.elegantthemes.com/preview/Notebook/2011/12/04/my-daily-journal-entry/">
+                                <img src="http://www.elegantthemes.com/preview/Notebook/wp-content/uploads/et_temp/5-192629_280x117.jpg" class="n-post-image" alt="My Daily Journal Entry" width="280" height="117" />
+                                <span class="overlay"></span>
+                            </a>
+                        </div> 	<!-- end .thumb -->
+                        <div class="content">
+                            <h2 class="title">
+                                <a href="http://www.elegantthemes.com/preview/Notebook/2011/12/04/my-daily-journal-entry/">My Daily Journal Entry</a>
+                            </h2>
+                            <p class="meta">By <a href="http://www.elegantthemes.com/preview/Notebook/author/admin/" title="Posts by admin" rel="author">admin</a> on 12-04-2011</p>
+                            <p>Sed dolor tellus, congue sollicitudin bibendum rhoncus, tempor luctus...</p>
+                        </div> <!-- end .content-->
+                    </div> <!-- end .main_content-->
+                    <div class="center_layer"></div>
+                    <div class="bottom_layer"></div>
+                </article> <!-- end .entry-->
+
+                <article id="post-20" class="post-20 post type-post status-publish format-audio hentry category-blog audio entry masonry-brick">
+                    <img src="http://www.elegantthemes.com/preview/Notebook/wp-content/uploads/et_temp/14-128743_176x176.jpg" class="audio-image" alt="This Happened To Me Today" width="176" height="176" />
+                    <div class="content">
+                        <div class="audio_info">
+                            <h2 class="title">
+                                <a href="http://www.elegantthemes.com/preview/Notebook/2011/12/04/this-happened-to-me-today/">This Happened To Me Today</a>
+                            </h2>
+                            <p class="meta">By <a href="http://www.elegantthemes.com/preview/Notebook/author/admin/" title="Posts by admin" rel="author">admin</a> on 12-04-2011</p>
+                        </div> <!-- end .audio_info -->
+                        <div id="jquery_jplayer_2" class="jp-jplayer" style="background-color: rgb(0, 0, 0);">
+                            <img id="jp_poster_1" style="width: 288px; height: 0px; display: none;" />
+                            <audio id="jp_audio_1" preload="metadata" src="http://www.elegantthemes.com/preview/Notebook/wp-content/uploads/2011/12/DJ-Practice.mp3"></audio>
+                        </div>
+                        <div id="jp_container_2" class="jp-audio">
+                            <div class="jp-type-single">
+                                <div class="jp-gui jp-interface">
+                                    <ul class="jp-controls">
+                                        <li>
+                                            <a href="javascript:;" class="jp-play audio_play" tabindex="1" style="">Play</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:;" class="jp-pause" tabindex="1" style="display: none;">Pause</a>
+                                        </li>
+                                    </ul>
+                                    <div class="jp-progress">
+                                        <div class="jp-seek-bar" style="width: 100%;">
+                                            <div class="jp-play-bar" style="width: 0%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="jp-no-solution">
+                                    <span>Update Required</span>
+                                    To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- end .content -->
+                </article> <!-- end .entry -->
+
+                <article id="post-44" class="post-44 post type-post status-publish format-video hentry category-blog video entry masonry-brick">
+                    <div class="img">
+                        <a href="#et_video_post_44" class="fancybox" title="Priscilla Ahn Dream">
+                            <span class="video_box">
+                                <img src="http://www.elegantthemes.com/preview/Notebook/wp-content/uploads/et_temp/6-84783_280x187.jpg" class="video-image" alt="Priscilla Ahn Dream" width="280" height="187" />
+                            </span>
+                            <span class="overlay"></span>
+                            <span class="play"></span>
+                        </a>
+                    </div> 	<!-- end .img -->
+                    <div class="content">
+                        <h2 class="title">
+                            <a href="http://www.elegantthemes.com/preview/Notebook/2011/12/03/priscilla-ahn-dream/">Priscilla Ahn Dream</a>
+                        </h2>
+                        <p class="meta">By <a href="http://www.elegantthemes.com/preview/Notebook/author/admin/" title="Posts by admin" rel="author">admin</a> on 12-03-2011</p>
+                    </div>
+                </article> <!-- end .entry-->
+
+                <div class="et_embedded_videos">
+                    <div id="et_video_post_44">
+                        <p>
+                            <iframe width="500" height="281" src="" frameborder="0" allowfullscreen=""></iframe>
+                        </p>
+                    </div>
+                </div>
+
+                <article id="post-54" class="post-54 post type-post status-publish format-standard hentry category-blog normal-post entry masonry-brick">
+                    <div class="main_content">
+                        <div class="thumb">
+                            <a href="http://www.elegantthemes.com/preview/Notebook/2011/12/02/follow-the-light/">
+                                <img src="http://www.elegantthemes.com/preview/Notebook/wp-content/uploads/et_temp/8-165182_280x117.jpg" class="n-post-image" alt="Follow The Light" width="280" height="117" />
+                                <span class="overlay"></span>
+                            </a>
+                        </div> 	<!-- end .thumb -->
+                        <div class="content">
+                            <h2 class="title">
+                                <a href="http://www.elegantthemes.com/preview/Notebook/2011/12/02/follow-the-light/">Follow The Light</a>
+                            </h2>
+                            <p class="meta">By <a href="http://www.elegantthemes.com/preview/Notebook/author/admin/" title="Posts by admin" rel="author">admin</a> on 12-02-2011</p>
+                            <p>Ut a nibh tortor, et sagittis massa. Fusce lacinia, nisl sit amet accumsan...</p>
+                        </div> <!-- end .content-->
+                    </div> <!-- end .main_content-->
+                    <div class="center_layer"></div>
+                    <div class="bottom_layer"></div>
+                </article> <!-- end .entry-->
+
+                <article id="post-60" class="post-60 post type-post status-publish format-audio hentry category-blog audio entry masonry-brick">
+                    <img src="http://www.elegantthemes.com/preview/Notebook/wp-content/uploads/et_temp/9-222370_176x176.jpg" class="audio-image" alt="A Change Is Gonna Come" width="176" height="176" />
+                    <div class="content">
+                        <div class="audio_info">
+                            <h2 class="title">
+                                <a href="http://www.elegantthemes.com/preview/Notebook/2011/12/01/a-change-is-gonna-come/">A Change Is Gonna Come</a>
+                            </h2>
+                            <p class="meta">By <a href="http://www.elegantthemes.com/preview/Notebook/author/admin/" title="Posts by admin" rel="author">admin</a> on 12-01-2011</p>
+                        </div> <!-- end .audio_info -->
+                        <div id="jquery_jplayer_3" class="jp-jplayer" style="background-color: rgb(0, 0, 0);">
+                            <img id="jp_poster_2" style="width: 288px; height: 0px; display: none;" />
+                            <audio id="jp_audio_2" preload="metadata" src="http://www.elegantthemes.com/preview/Notebook/wp-content/uploads/2011/12/A-Change-Is-Gonna-Come.mp3"></audio>
+                        </div>
+                        <div id="jp_container_3" class="jp-audio">
+                            <div class="jp-type-single">
+                                <div class="jp-gui jp-interface">
+                                    <ul class="jp-controls">
+                                        <li>
+                                            <a href="javascript:;" class="jp-play audio_play" tabindex="1" style="">Play</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:;" class="jp-pause" tabindex="1" style="display: none;">Pause</a>
+                                        </li>
+                                    </ul>
+                                    <div class="jp-progress">
+                                        <div class="jp-seek-bar" style="width: 100%;">
+                                            <div class="jp-play-bar" style="width: 0%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="jp-no-solution">
+                                    <span>Update Required</span>
+                                    To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- end .content -->
+                </article> <!-- end .entry -->
+
+                <article id="post-66" class="post-66 post type-post status-publish format-image hentry category-blog image entry masonry-brick">
+                    <div class="photo">
+                        <a href="http://www.elegantthemes.com/preview/Notebook/wp-content/uploads/2011/12/10.jpg" class="fancybox" title="Spiral Staircase Photo">
+                            <img src="http://www.elegantthemes.com/preview/Notebook/wp-content/uploads/et_temp/10-136970_280x187.jpg" class="entry-image" alt="Spiral Staircase Photo" width="280" height="187" />
+                            <span class="overlay"></span>
+                            <span class="zoom"></span>
+                        </a>
+                        <span class="tape"></span>
+                    </div> 	<!-- end .photo -->
+                    <div class="content">
+                        <h2 class="title">
+                            <a href="http://www.elegantthemes.com/preview/Notebook/2011/11/28/spiral-staircase-photo/">Spiral Staircase Photo</a>
+                        </h2>
+                        <p class="meta">By <a href="http://www.elegantthemes.com/preview/Notebook/author/admin/" title="Posts by admin" rel="author">admin</a> on 11-28-2011</p>
+                    </div> <!-- end .content-->
+                </article> <!-- end .entry-->
+
+                <article id="post-447" class="post-447 post type-post status-publish format-standard hentry category-blog normal-post entry masonry-brick">
+                    <div class="main_content">
+                        <div class="thumb">
+                            <a href="http://www.elegantthemes.com/preview/Notebook/2011/11/27/the-haunted-woods/">
+                                <img src="http://www.elegantthemes.com/preview/Notebook/wp-content/uploads/et_temp/121-164333_280x117.jpg" class="n-post-image" alt="The Haunted Woods" width="280" height="117" />
+                                <span class="overlay"></span>
+                            </a>
+                        </div> 	<!-- end .thumb -->
+                        <div class="content">
+                            <h2 class="title">
+                                <a href="http://www.elegantthemes.com/preview/Notebook/2011/11/27/the-haunted-woods/">The Haunted Woods</a>
+                            </h2>
+                            <p class="meta">By <a href="http://www.elegantthemes.com/preview/Notebook/author/admin/" title="Posts by admin" rel="author">admin</a> on 11-27-2011</p>
+                            <p>Quisque ornare metus id nunc auctor porttitor. Praesent blandit arcu...</p>
+                        </div> <!-- end .content-->
+                    </div> <!-- end .main_content-->
+                    <div class="center_layer"></div>
+                    <div class="bottom_layer"></div>
+                </article> <!-- end .entry-->
             </div>
             <div class="wp-pagenavi">
                 <span class="pages">Page 1 of 2</span>
                 <span class="current">1</span>
-                <a href="/blog/page/2/" class="page larger">2</a>
-                <a href="/blog/page/2/" class="nextpostslink">»</a>
+                <a href="#" class="page larger">2</a>
+                <a href="#" class="nextpostslink">»</a>
             </div>
             <div id="footer_top_part"></div>
-            <footer id="main_footer" style="height: auto;"></footer>
         </div>
     </div>
 </div>
-<script src="js/vendor/jquery-1.9.1.min.js"></script>
 <script src="js/plugins.js"></script>
 <script src="js/main.js"></script>
 

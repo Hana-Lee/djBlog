@@ -54,7 +54,7 @@ a { border: none; text-decoration: none; }
 .theme-item-wrap { float: left; margin-right: 25px; margin-left: 25px; margin-bottom: 70px; position: relative; }
 .theme-item-wrap h2 { font-size: 22px; font-style: italic; text-align: center; clear: both; padding-bottom: 5px;}
 .theme-item-wrap a img { border: none; box-shadow: 0px 0px 5px #bebebe; -moz-box-shadow: 0px 0px 5px #bebebe; -webkit-box-shadow: 0px 0px 5px #bebebe; }
-.theme-item-wrap div { position: absolute; top: 216px; left: -2px; background-image: url(../images/gallery2-button.png); width: 258px; height: 45px; }
+.theme-item-wrap div { position: absolute; top: 216px; left: -2px; background-image: url(../img/gallery2-button.png); width: 258px; height: 45px; }
 .theme-item-wrap div a { font-family: Gerogia; color: #fff; display: block; width: 38px; height: 30px; float: left; padding: 8px 0 0 65px; font-style: italic; font-size: 14px; -moz-text-shadow: 1px 1px 0px #0a454e; -webkit-text-shadow: 1px 1px 0px #0a454e; text-shadow: 1px 1px 0px #0a454e; }
 .theme-item-wrap div a.theme-item-link-two { padding: 8px 0 0 60px; width: 33px; }
 .theme-item-wrap div a:hover { color: #fef2a3; }
@@ -120,7 +120,7 @@ img#about-image { float: left; margin: 3px 8px 8px 0px; }
 	#sidebar { text-align:center; background: url(../img/sidebar-bg.png) repeat-y; padding-top:27px; }
 	#sidebar, #sidebar p { line-height:24px; }
 #content-area { margin-left:248px; }
-	#content_right { padding-top:40px; }
+	#content_right { margin-top:40px; }
 	.entry { float:left; margin-left:43px; margin-bottom:40px; width:292px; height:271px; }
 	.entry.normal-post { position: relative; }
 	.entry.normal-post .main_content { border:1px solid #e0e0e0; background-color:#fff; position: relative; height: 271px; z-index: 4; }
@@ -335,7 +335,7 @@ h3#comments, h3#reply-title, #trackbacks h3 { color: #b8b8b8; font-style: italic
 /*---------------------[FOOTER]-------------------*/
 /*------------------------------------------------*/
 
-#footer_top_part { margin: 50px 0 0 45px; background: url(../img/footer-top-left.png) no-repeat; padding: 0 0 0 7px; }
+#footer_top_part { background: url(../img/footer-top-left.png) no-repeat; padding: 0 0 0 7px; }
 	#footer_top_part div { background: url(../img/footer-top-bg.png) repeat-x; height: 7px; }
 
 #main_footer { margin: 0 0 0 42px; background: #fcfcfc; padding: 0 0 0 4px; border: 1px solid #e0e0e0; border-width: 1px 0 0 1px; -moz-box-shadow: inset 1px 1px 1px #fff; -webkit-box-shadow: inset 1px 1px 1px #fff; box-shadow: inset 1px 1px 1px #fff; }
@@ -395,14 +395,18 @@ img.alignright { display:inline; float:right; margin-left:15px; }
 /*------------------------------------------------*/
 .pagination { overflow: hidden; padding: 20px 42px 0; }
 
-.wp-pagenavi { position: relative; text-align: center; clear: none !important; padding: 20px 42px 0; text-shadow: 0 1px 0 #fff; font-size: 28px; font-family: Georgia, serif;  font-style: italic; }
-.wp-pagenavi a, .wp-pagenavi a:link, .wp-pagenavi a:visited { padding: 5px 7px !important; margin: 2px; text-decoration: none; border: none !important; background-color: none; font-weight: normal !important; color: #555454; }
-.wp-pagenavi span.pages { padding: 5px 7px 5px !important; margin: 2px !important; border: none !important; color: #989898; background-color: none; font-style: normal; font-size: 13px; margin-right: 10px !important; }
-.wp-pagenavi span.current, .wp-pagenavi span.extend, .wp-pagenavi a:active, .wp-pagenavi a:hover { padding: 5px 7px !important; margin: 2px; font-weight: normal !important; background-color:none !important; border: none !important; color:#6ca7bf !important; }
+.wp-pagenavi { position: relative; text-align: center; clear: none !important;  text-shadow: 0 1px 0 #fff; font-size: 28px; font-family: Georgia, serif;  font-style: italic; }
+.wp-pagenavi a, .wp-pagenavi a:link, .wp-pagenavi a:visited { padding: 5px 7px !important; margin: 2px; text-decoration: none; border: none !important; background: none; font-weight: normal !important; color: #555454; }
+.wp-pagenavi span.pages { padding: 5px 7px 5px !important;
+    border: none !important; color: #989898; background: none; font-style: normal; font-size: 13px;
+    margin: 2px 10px 2px 2px;
+}
+.wp-pagenavi span.current, .wp-pagenavi span.extend, .wp-pagenavi a:active, .wp-pagenavi a:hover { padding: 5px 7px !important; margin: 2px; font-weight: normal !important; background:none !important; border: none !important; color:#6ca7bf !important; }
 
 a.readmore:hover, #sidebar div.custom-sidebar-block ul.control li a:hover, ul#cats-menu li a:hover, ul#page-menu li a:hover, div#slider-control div.featitem h2 a  { text-decoration: none; }
 .foursixeight { margin: 0px 0px 15px 84px;}
 
+/*
 #et-control-panel { position: fixed; left: 0px; top: 94px; width: 169px; z-index: 9000; color: #9f9f9f; text-shadow: 1px 1px 1px #fff; background: url(../img/control_panel/control-panel-bottom.png) no-repeat bottom left; padding-bottom: 18px; }
 	#control-panel-main { background: url(../img/control_panel/control-panel-mainbg.png) repeat-y; -moz-border-radius-topright: 14px; -webkit-border-top-right-radius: 14px; border-top-right-radius: 14px; }
 		#et-control-close { background: url(../img/control_panel/control-panel-closebutton.png) no-repeat; position: absolute; top: 17px; right: -41px; width: 45px; height: 40px; display: block; }
@@ -445,7 +449,7 @@ a.readmore:hover, #sidebar div.custom-sidebar-block ul.control li a:hover, ul#ca
 			.et-control-colorpicker { background: url(../img/control_panel/control-panel-colorpicker.png) no-repeat; width: 18px; height: 19px; display: block; float: right; }
 			.et-font-control { margin-top: 9px; }
 			.colorpicker { z-index: 10000; }
-		
+
 #et_control_header_font, #et_control_body_font { width: 73px; }
 
 .colorpicker { width: 356px; height: 176px; overflow: hidden; position: absolute; background: url(../img/colorpicker/colorpicker_background.png); font-family: Arial, Helvetica, sans-serif; display: none; }
@@ -474,4 +478,5 @@ a.readmore:hover, #sidebar div.custom-sidebar-block ul.control li a:hover, ul#ca
 .colorpicker_slider { background-position: bottom; }
 
 #control-panel-main label { font-size: 11px; }
+*/
 .et_embedded_videos { display: none !important; }
