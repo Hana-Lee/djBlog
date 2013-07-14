@@ -6,7 +6,7 @@
 <body>
 <div>
     <h3>
-        <a href="/blog/article/{{ current_article.id }}">{{ current_article.title }}</a>
+        <a href="/blog/article/{{ article.id }}">{{ article.title }}</a>
     </h3>
     <div>
         <span>
@@ -16,18 +16,18 @@
     <ul>
         <li>
             <span>카테고리</span>
-            <div>{{ current_article.category.name }}</div>
+            <div>{{ article.category.name }}</div>
         </li>
         <li>
-            {% for tag in current_article.tags.all %}
+            {% for tag in article.tags.all %}
             <span>태그목록 : </span>
             <div>{{ tag.name }}</div>
             {% endfor %}
         </li>
-        <li>{{ current_article.created }}</li>
-        <li>{{ current_article.comments }}</li>
+        <li>{{ article.created }}</li>
+        <li>{{ article.comments }}</li>
     </ul>
-    <textarea cols="100" rows="20" readonly="true" style="border: 1px solid #DFDFDF;">{{ current_article.content }}</textarea>
+    <textarea cols="100" rows="20" readonly="true" style="border: 1px solid #DFDFDF;">{{ article.content }}</textarea>
 </div>
 <div>
     {% include 'write_cmt.html' %}

@@ -2,6 +2,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render_to_response, redirect
 from django.template import Context, loader, RequestContext
+import textile
 
 import hashlib
 
@@ -53,15 +54,18 @@ def read(request, article_id=None):
 
     comments = Comment.objects.filter(article=current_article).order_by('created')
 
+    #content = textile.textile(current_article.content)
+    #current_article.content = content
+
     data_dict = ({
         'page_title': page_title,
-        'current_article': current_article,
+        'article': current_article,
         'prev_article': prev_article,
         'next_article': next_article,
         'comments' : comments
     })
 
-    return render_to_response('read.html', data_dict, context_instance=RequestContext(request))
+    return render_to_response('article.html', data_dict, context_instance=RequestContext(request))
 
 
 def write_form(request):
