@@ -76,7 +76,7 @@ def createArticle(**kwargs):
     return new_article
 
 
-@transaction.commit_manually
+@transaction.commit_on_success
 def update_comment(**kwargs):
     new_cmt = Comment(
         name=kwargs.get('name'),
@@ -92,8 +92,6 @@ def update_comment(**kwargs):
     except DatabaseError, e:
         error_msg = '댓글 저장중 오류가 발생 하였습니다. %s'
         raise DatabaseError(error_msg % e)
-
-    transaction.commit()
 
     return new_cmt
 
