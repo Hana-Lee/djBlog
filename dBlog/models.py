@@ -30,3 +30,8 @@ class Comment(models.Model):
     updated = models.DateTimeField(auto_now=True)
     deleted = models.DateTimeField(auto_now=True)
     article = models.ForeignKey(Article)
+
+
+class Users(models.Model):
+	birthday = models.DateTimeField(auto_now=True)
+	sex = models.CharField(max_length=1 null=True)
