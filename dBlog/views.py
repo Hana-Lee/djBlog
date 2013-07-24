@@ -89,7 +89,7 @@ def add_post(request):
     try:
         article_category = Category.objects.get(id=request.POST.get('category'))
     except:
-        return HttpResponse('카테고리 지정안되어.')
+        return HttpResponse('카테고리 지정이 안되어 있습니다.')
 
     tag_list = []
     if request.POST.has_key('tags') is True:
