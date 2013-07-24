@@ -42,6 +42,7 @@ def read(request, article_id=None):
         current_article = Article.objects.get(id=int(article_id))
     except:
         return HttpResponse('%d 에 해당하는 글이 존재 하지 않습니다' % article_id)
+
     try:
         prev_article = current_article.get_previous_by_created()
     except:
@@ -80,11 +81,6 @@ def write_form(request):
 
 
 def add_post(request):
-    """
-
-    :param request:
-    :return:
-    """
     formAva = checkWriteForm(request)
 
     if formAva is False:
@@ -93,7 +89,7 @@ def add_post(request):
     try:
         article_category = Category.objects.get(id=request.POST.get('category'))
     except:
-        return HttpResponse('헐....카테고리 지정안되어있음.')
+        return HttpResponse('카테고리 지정안되어.')
 
     tag_list = []
     if request.POST.has_key('tags') is True:
