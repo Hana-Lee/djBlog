@@ -25,5 +25,6 @@ urlpatterns = patterns('',
     url(r'^blog/add/category/$', 'dBlog.views.add_category'),
     url(r'^blog/delete/comment/$', 'dBlog.views.del_comment'),
     url(r'^blog/delete/article/$', 'dBlog.views.del_article'),
-    url(r'^blog/delete/category/$', 'dBlog.views.del_category')
+    url(r'^blog/delete/category/$', 'dBlog.views.del_category'),
+		url(r'^blog/static/&', 'dBlog.views.static')
 )
