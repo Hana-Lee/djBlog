@@ -56,3 +56,8 @@ class BlogRequestResponseTest(TestCase):
         c = Client()
         response = c.get('/blog/page/1/')
         self.assertEqual(response.status_code, 200)
+
+				
+class BlogViewTest(TestCase):
+	def setUp(self):
+		category = Category.objects.create(name='first')
