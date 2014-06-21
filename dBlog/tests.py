@@ -8,7 +8,7 @@ import os
 from django.test import TestCase, Client
 from django.conf import settings
 
-from dBlog.models import Article, Category
+from dBlog.model import Article, Category
 from dBlog.service import BlogService
 
 

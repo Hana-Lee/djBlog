@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.db import transaction, DatabaseError
 
-from dBlog.models import Comment, Article, Tag, Category
+from dBlog.model import Comment, Article, Tag, Category
 
 
 class BlogService(object):

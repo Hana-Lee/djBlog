@@ -6,7 +6,7 @@ import textile
 
 import hashlib
 
-from dBlog.models import Article, Category, Comment
+from dBlog.model import Article, Category, Comment
 from dBlog import service
 
 
