@@ -5,7 +5,7 @@ djBlog
 * python 언어를 공부하는게 주된 목적이며, 목표로는 기본적인 기능들을 제공하는 블로그 서비스를 python 언어를 이용하여 만들어 보는것입니다.
 
 ### 사용된 언어
-* python 2.7, django plugin
+* python 2.7, django Framework
 * DB : sqlite3
 
 ### 간단 설명
